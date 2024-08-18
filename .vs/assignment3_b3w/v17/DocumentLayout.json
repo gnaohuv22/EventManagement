@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\dotNET\\assignment3_b3w\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\account\\usermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\account\\usermanagement.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|e:\\dotnet\\assignment3_b3w\\pages\\account\\usermanagement.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{34034483-A695-41E2-A0C9-C2ECBF67944F}|assignment3_b3w.csproj|solutionrelative:pages\\account\\usermanagement.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Account\\Register.cshtml",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T10:42:16.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T10:40:32.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Privacy.cshtml",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Privacy.cshtml",
+              "RelativeToolTip": "Pages\\Privacy.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAAAQAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T10:36:10.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T10:35:06.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserManagement.cshtml.cs",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\UserManagement.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Account\\UserManagement.cshtml.cs",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\UserManagement.cshtml.cs",
+              "RelativeToolTip": "Pages\\Account\\UserManagement.cshtml.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAA5wEMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-18T10:24:39.556Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserManagement.cshtml",
+              "DocumentMoniker": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\UserManagement.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Account\\UserManagement.cshtml",
+              "ToolTip": "E:\\dotNET\\assignment3_b3w\\Pages\\Account\\UserManagement.cshtml",
+              "RelativeToolTip": "Pages\\Account\\UserManagement.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAC0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-18T10:21:46.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

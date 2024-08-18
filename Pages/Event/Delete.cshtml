@@ -1,0 +1,28 @@
+﻿@page
+@model assignment3_b3w.Pages.Event.DeleteModel
+@{
+    ViewData["Title"] = "Delete Event";
+}
+
+<h2>Are you sure you want to delete this event?</h2>
+
+<div>
+    <h4>@Model.Event.Title</h4>
+    <hr />
+    <p>@Model.Event.Description</p>
+    <dl class="row">
+        <dt class="col-sm-2">Location</dt>
+        <dd class="col-sm-10">@Model.Event.Location</dd>
+        <dt class="col-sm-2">Category</dt>
+        <dd class="col-sm-10">@Model.Event.Category.CategoryName</dd>
+        <dt class="col-sm-2">Attendee Count</dt>
+        <dd class="col-sm-10">@Model.attendeeCount</dd>
+    </dl>
+
+    <form method="POST">
+        <input type="hidden" asp-for="Event.EventId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+

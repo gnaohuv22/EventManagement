@@ -1,0 +1,255 @@
+﻿@page
+@model assignment3_b3w.Pages.Event.IndexModel
+@{
+    ViewData["Title"] = "Event List";
+}
+
+<h2>@ViewData["Title"]</h2>
+@if (Model.UserRole == "Admin")
+{
+    <a class="btn btn-primary" asp-page="EventForm">Create new Event</a>
+}
+
+<form method="get">
+    <div class="form-group">
+        <label for="SearchTerm">Search by Title</label>
+        <input type="text" class="form-control" id="SearchTerm" name="SearchTerm" value="@Model.SearchTerm" />
+    </div>
+    <div class="form-group">
+        <label for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control" id="category" asp-items="Model.CategoryList"></select>
+    </div>
+    <div class="form-group">
+        <label for="StartDate">Start Date</label>
+        <input type="date" class="form-control" id="StartDate" name="StartDate" value="@Model.StartDate?.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="form-group">
+        <label for="EndDate">End Date</label>
+        <input type="date" class="form-control" id="EndDate" name="EndDate" value="@Model.EndDate?.ToString("yyyy-MM-dd")" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div>
+    <span class="text-danger">@Model.ErrorMessage</span>
+</div>
+<div>
+    <span class="text-danger">@Model.ErrorMessage</span>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Events[0].Category)
+            </th>
+            <th>Participant(s)</th>
+            <th>Enrollment</th>
+            @if (Model.UserRole == "Admin")
+            {
+                <th>Other actions</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody id="eventTb">
+        @foreach (var item in Model.Events)
+        {
+            <tr data-event-id="@item.EventId">
+                <td class="event-title">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="event-description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="event-start-time">
+                    @(item.StartTime.HasValue ? item.StartTime.Value.ToString("MM/dd/yyyy HH:mm:ss") : "N/A")
+                </td>
+                <td class="event-end-time">
+                    @(item.EndTime.HasValue ? item.EndTime.Value.ToString("MM/dd/yyyy HH:mm:ss") : "N/A")
+                </td>
+                <td class="event-location">
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td class="event-category">
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td id="attendee-count-@item.EventId">
+                    @(Model.AttendeeCounts.ContainsKey(item.EventId)
+                        ? Model.AttendeeCounts[item.EventId]
+                        : 0)
+                </td>
+                <td>
+                    @if (Model.UserEnrollmentStatus.Count > 0 && Model.UserEnrollmentStatus.ContainsKey(item.EventId))
+                    {
+                        @if (Model.UserEnrollmentStatus[item.EventId])
+                        {
+                            <a asp-page="./EnrollConfirmation" asp-route-eventId="@item.EventId">Unenroll</a>
+                        }
+
+                    }
+                    else
+                    {
+                        <a asp-page="./EnrollConfirmation" asp-route-eventId="@item.EventId">Enroll</a>
+                    }
+                </td>
+                @if (Model.UserRole == "Admin")
+                {
+                    <td>
+                        <a asp-page="./EventForm" asp-route-id="@item.EventId">Edit</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.EventId">Delete</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script type="text/javascript">
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/crudHub")
+            .build();
+
+        connection.start().catch(function (err) {
+            return console.error(err.toString());
+        });
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const padTo2Digits = (num) => num.toString().padStart(2, '0');
+
+            return [
+                padTo2Digits(date.getMonth() + 1),
+                padTo2Digits(date.getDate()),
+                date.getFullYear()
+            ].join('/') + ' ' + [
+                padTo2Digits(date.getHours()),
+                padTo2Digits(date.getMinutes()),
+                padTo2Digits(date.getSeconds())
+            ].join(':');
+        }
+
+        // Hàm kiểm tra xem một sự kiện có phù hợp với tiêu chí tìm kiếm không
+        function eventMatchesSearchCriteria(eventData) {
+            const searchTerm = document.getElementById("SearchTerm").value.toLowerCase();
+            const selectedCategoryId = document.getElementById("category").value;
+            const startDate = document.getElementById("StartDate").value;
+            const endDate = document.getElementById("EndDate").value;
+
+            // Nếu người dùng có nhập StartDate
+            let startDateTime = startDate ? new Date(startDate) : null;
+            if (startDateTime) {
+                startDateTime.setHours(0, 0, 0, 0); // Set to 00:00:00
+            }
+
+            // Nếu người dùng có nhập EndDate
+            let endDateTime = endDate ? new Date(endDate) : null;
+            if (endDateTime) {
+                endDateTime.setHours(23, 59, 59, 999); // Set to 23:59:59
+            }
+
+            if (searchTerm && !eventData.title.toLowerCase().includes(searchTerm)) {
+                return false;
+            }
+            if (selectedCategoryId && selectedCategoryId !== '0' && selectedCategoryId !== eventData.categoryId.toString()) {
+                return false;
+            }
+            if (startDate && new Date(eventData.startTime) < new Date(startDate)) {
+                return false;
+            }
+            if (endDate && new Date(eventData.endTime) > new Date(endDate)) {
+                return false;
+            }
+            return true;
+        }
+
+        // Hàm cập nhật hoặc thêm mới một hàng trong bảng
+        function updateOrAddEventRow(eventData, attendeeCount, enrolled, userRole) {
+            const row = document.querySelector(`tr[data-event-id="${eventData.eventId}"]`);
+            if (row) {
+                // Cập nhật hàng hiện có
+                row.querySelector(".event-title").textContent = eventData.title;
+                row.querySelector(".event-description").textContent = eventData.description;
+                row.querySelector(".event-start-time").textContent = formatDate(eventData.startTime);
+                row.querySelector(".event-end-time").textContent = formatDate(eventData.endTime);
+                row.querySelector(".event-location").textContent = eventData.location;
+                row.querySelector(".event-category").textContent = eventData.category;
+                row.querySelector(`#attendee-count-${eventData.eventId}`).textContent = attendeeCount;
+                // Cập nhật nút Enroll/Unenroll
+            } else {
+                const enrollLink = enrolled
+                    ? `<a href="/Event/EnrollConfirmation?eventId=${eventData.eventId}">Unenroll</a>`
+                    : `<a href="/Event/EnrollConfirmation?eventId=${eventData.eventId}">Enroll</a>`;
+                const action = userRole === "Admin" 
+                    ? `<a href="/Event/EventForm?id=${eventData.eventId}">Edit</a> | <a href="/Event/Delete?id=${eventData.eventId}">Delete</a>`
+                    : ``;
+                // Thêm hàng mới
+                const tbody = document.getElementById("eventTb");
+                const newRow = `
+                            <tr data-event-id="${eventData.eventId}">
+                                <td class="event-title">${eventData.title}</td>
+                                <td class="event-description">${eventData.description}</td>
+                                <td class="event-start-time">${formatDate(eventData.startTime)}</td>
+                                <td class="event-end-time">${formatDate(eventData.endTime)}</td>
+                                <td class="event-location">${eventData.location}</td>
+                                <td class="event-category">${eventData.category}</td>
+                                <td id="attendee-count-${eventData.eventId}">${attendeeCount}</td>
+                                <td>${enrollLink}</td>
+                                <td>${action}</td>
+                            </tr>
+                        `;
+                tbody.innerHTML += newRow;
+            }
+        }
+
+        // Sử dụng hàm formatDate trong đoạn code của bạn
+        connection.on("UpdateEventInfo", function (eventId, updatedEventData, attendeeCount, enrolled, userRole) {
+            if (eventMatchesSearchCriteria(updatedEventData)) {
+                updateOrAddEventRow(updatedEventData, attendeeCount, enrolled, userRole);
+            } else {
+                const row = document.querySelector(`tr[data-event-id="${eventId}"]`);
+                if (row) {
+                    row.remove();
+                }
+            }
+
+        });
+
+        connection.on("UpdateAttendeeCount", function (eventId, attendeeCount) {
+            //Update attendee count
+            const attendeeCountElement = document.querySelector(`#attendee-count-${eventId}`);
+            if (attendeeCountElement) {
+                attendeeCountElement.textContent = attendeeCount;
+            }
+        });
+
+        connection.on("EventDeleted", function (eventId) {
+            const row = document.querySelector(`tr[data-event-id="${eventId}"]`);
+            if (row) {
+                row.remove();
+            }
+        });
+
+        connection.on("EventAdded", function (event) {
+            if (eventMatchesSearchCriteria(event)) {
+                updateOrAddEventRow(event, 0, false);
+            }
+        });
+    </script>
+}

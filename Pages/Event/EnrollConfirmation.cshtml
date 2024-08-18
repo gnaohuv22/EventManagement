@@ -1,0 +1,54 @@
+﻿@page
+@model assignment3_b3w.Pages.Event.EnrollConfirmationModel
+@{
+    ViewData["Title"] = "Enroll Confirmation";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>Event Details</h3>
+    <h4>@Model.Event.Title</h4>
+    <hr />
+    <p>@Model.Event.Description</p>
+    <dl class="row">
+        <dt class="col-sm-2">Location</dt>
+        <dd class="col-sm-10">@Model.Event.Location</dd>
+        <dt class="col-sm-2">Category</dt>
+        <dd class="col-sm-10">@Model.Event.Category.CategoryName</dd>
+    </dl>
+</div>
+
+<div>
+    <h3>You will
+        @if (Model.IsEnroll)
+        {
+            <span class="text-success">enroll</span>
+        }
+        else
+        {
+            <span class="text-danger">unenroll</span>
+        }
+         this event as...
+    </h3>
+    <dt class="col-sm-2">Full Name</dt>
+    <dd class="col-sm-10">@Model.user.FullName</dd>
+    <dt class="col-sm-2">Email</dt>
+    <dd class="col-sm-10">@Model.user.Email</dd>
+</div>
+
+
+<div>
+    <form method="POST">
+        <input type="hidden" asp-for="@Model.Event.EventId" />
+        @if(Model.IsEnroll)
+        {
+            <button type="submit" class="btn btn-success">Enroll</button>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-warning">Unenroll</button>
+        }
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
