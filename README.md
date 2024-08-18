@@ -44,8 +44,8 @@ This project being developed for an assignment from instructor HoanNN in FPT Uni
 
 1. **Clone the repository**:
 ```
-    git clone https://github.com/yourusername/event-management-system.git
-    cd event-management-system
+    git clone https://github.com/gnaohuv22/EventManagement.git
+    cd EventManagement
 ```
 
 2. **Set up the database**:
