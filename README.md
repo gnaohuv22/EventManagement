@@ -2,7 +2,7 @@
 
 Welcome to the Event Management System, a comprehensive solution for managing events, participants, and categories. This project is built using ASP.NET Core Razor Pages and Entity Framework Core.
 
-This project being developed for an assignment from instructor HoanNN in FPT University, Summer 2024 Block3W.
+This project being developed for an assignment from instructor HoanNN in FPT University, Summer 2024 Block3W. You can get the requirements [here](https://github.com/user-attachments/files/16648119/Assignment_03_Hoan.docx).
 
 ## Table of Contents
 
@@ -52,13 +52,13 @@ This project being developed for an assignment from instructor HoanNN in FPT Uni
     - Update the connection string in `appsettings.json` to point to your SQL Server instance.
     - Run the following command to apply migrations:
 ```
-dotnet ef database update
+    dotnet ef database update
 ```
 
 3. **Run the application**:
-    ```
+```
     dotnet run
-    ```
+```
 
 
 4. **Open your browser** and navigate to `https://localhost:9000`. Modify it at `launchSettings.json` as your need.
